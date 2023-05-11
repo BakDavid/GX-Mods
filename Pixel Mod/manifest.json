@@ -26,76 +26,76 @@
             {
                 "CLICK":
                 [
-                    "sound/Hit_Hurt23.wav"
+                    "sound/click.wav"
                 ],
                 "FEATURE_SWITCH_OFF":
                 [
-                    "sound/Randomize134.wav"
+                    "sound/switch_off.wav"
                 ],
                 "FEATURE_SWITCH_ON":
                 [
-                    "sound/Powerup15.wav"
+                    "sound/switch_on.wav"
                 ],
                 "HOVER":
                 [
-                    "sound/Hit_Hurt23.wav"
+                    "sound/click.wav"
                 ],
                 "HOVER_UP":
                 [
-                    "sound/Hit_Hurt23.wav"
+                    "sound/click.wav"
                 ],
                 "IMPORTANT_CLICK":
                 [
-                    "sound/Hit_Hurt23.wav"
+                    "sound/click.wav"
                 ],
                 "LEVEL_UPGRADE":
                 [
-                    "sound/Powerup31.wav"
+                    "sound/level_up.wav"
                 ],
                 "LIMITER_OFF":
                 [
-                    "sound/Randomize134.wav"
+                    "sound/switch_off.wav"
                 ],
                 "LIMITER_ON":
                 [
-                    "sound/Powerup15.wav"
+                    "sound/switch_on.wav"
                 ],
                 "SWITCH_TOGGLE":
                 [
-                    "sound/Randomize152.wav"
+                    "sound/switch_toggle.wav"
                 ],
                 "TAB_CLOSE":
                 [
-                    "sound/Randomize22222.wav"
+                    "sound/tab_close.wav"
                 ],
                 "TAB_INSERT":
                 [
-                    "sound/Randomize99.wav"
+                    "sound/tab_insert.wav"
                 ],
                 "TAB_SLASH":
                 [
-                    "sound/Hit_Hurt57.wav"
+                    "sound/tab_slash.wav"
                 ]
             },
             "keyboard_sounds":
             {
                 "TYPING_BACKSPACE":
                 [
-                    "keyboard/Randomize74.wav"
+                    "keyboard/backspace.wav"
                 ],
                 "TYPING_ENTER":
                 [
-                    "keyboard/Randomize62.wav"
+                    "keyboard/enter.wav"
                 ],
                 "TYPING_LETTER":
                 [
-                    "keyboard/Hit_Hurt3.wav",
-                    "keyboard/Hit_Hurt4.wav",
-                    "keyboard/Hit_Hurt9.wav"
+                    "keyboard/letter_1.wav",
+                    "keyboard/letter_2.wav",
+                    "keyboard/letter_3.wav"
                 ],
                 "TYPING_SPACE":
                 [
-                    "keyboard/Randomize81.wav"
+                    "keyboard/space.wav"
                 ]
             },
             "page_styles":
