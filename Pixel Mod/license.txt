@@ -30,17 +30,11 @@
                         |_|                
 ...............................................................................
 
-Hey there, welcome to the mod creation template based on the Purple Haze theme
-from  Opera GX. This  template  includes the original keyboard sounds, browser
-sounds, and music from Opera GX, as well as light and dark wallpapers that are
-based on the original Purple Haze wallpapers but have added information at the
-bottom to set them apart. There is also an example of animated wallpaper.
+Introducing Pixel Mod, the browser mod that brings a fresh and exciting new look to your browsing experience!
 
-We've also included a simple web  modding  CSS that changes the text color and
-background  color on web pages in the opera.com domain. This will show you how
-to read colors from the browser and apply them to web pages. And lastly, we've
-included  basic shaders  that  demonstrate  how  to  use  animated and  static
-versions. Have fun creating your mods!
+In addition to its visual appeal, Pixel Mod also includes a range of new sounds and music tracks to enhance your browsing experience. From the click of a button to the sound of a page loading, Pixel Mod's audio enhancements will keep you engaged and entertained while you browse.
+
+Pixel Mod is incredibly easy to install and use, making it the perfect choice for anyone looking to add a bit of personality to their browsing experience. So why wait? Download Pixel Mod today and start exploring the web in style!
                               
  _____           _ _ _       
 |     |___ ___ _| |_| |_ ___ 
@@ -48,7 +42,14 @@ versions. Have fun creating your mods!
 |_____|_| |___|___|_|_| |___|
 ...............................................................................
 
-CREDITS GO HERE
+Developed by:
+
+Bak David, Lead Programmer
+
+Third-Party Resources:
+
+Sound Effects: Bfxr
+Music: BeepBox
                                                               
  __    _                         
 |  |  |_|___ ___ ___ ___ ___ ___ 
@@ -56,7 +57,16 @@ CREDITS GO HERE
 |_____|_|___|___|_|_|___|___|___|
 ...............................................................................
                
-LICENCES GO HERE
+License for Pixel Mod
+2023 Bak David
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to use, copy, modify, merge, distribute, and/or sublicense the Software, subject to the following conditions:
+
+1.The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+2.THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+This license allows anyone to use, copy, modify, merge, distribute, and/or sublicense your mod, as long as they include your copyright notice and this license notice in all copies or substantial portions of the mod. It also includes a disclaimer of warranties and limitations of liability.
                        
  _____       _         
 |  |  |_ _ _| |___ ___ 
