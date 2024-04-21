@@ -1,24 +1,18 @@
-//draw_text(x,y,"David Test");
-draw_text(x,y,"X Offset: " + string(global.offset_x));
-if(battery_exist){
-	draw_text(x,y + 20,"We have battery");	
-	draw_text(x,y + 40,"Count of batteries " + string(battery_count));	
-	//draw_text(x,y + 60,"Battery name: " + battery_name[0]);	
-}else{
-	draw_text(x,y + 20,"No battery bruh");
-}
-
 if(cpu_exist){
-	draw_text(x,y + 60,"We have CPU");
-	if(cpu_count){
-		draw_text(x,y + 80,"Count of CPU: " + string(cpu_count));
-		draw_text(x,y + 100,"CPU name: " + cpu_name[0]);
-	}
-}else{
-	draw_text(x,y + 60,"We have no CPU");
+	draw_text(x,y,"CPU Name: " + cpu_name[0]);
+	draw_text(x,y + 20,"CPU Usage: " + string(cpu_usage[0]) + "%");
+	draw_text(x,y + 40,"CPU Current and Max Speed: " + string(cpu_curr_speed[0]) + "/" + string(cpu_curr_speed[0]) + " MHz");
 }
-
-draw_text(x,y + 120,"Audio exist: " + string(audio_exist));
-if(audio_exist){
-	draw_text(x,y + 140,"Audio output: " + string(audio_output));
+if(ram_exist){
+	draw_text(x,y + 60,"RAM Name: " + ram_name[0]);
+	draw_text(x,y + 80,"RAM Usage: " + string(ram_used[0] / 1000000) + "/" + string(ram_total[0] / 1000000) + " GB");
+}
+if(gpu_exist){
+	draw_text(x,y + 100,"GPU Name: " + gpu_name[0]);
+	draw_text(x,y + 120,"GPU Temperature: " + string(gpu_temp[0]) + " C");
+	draw_text(x,y + 140,"GPU Memory Usage: " + string(gpu_memory_used[0] / 1000000) + "/" + string(gpu_memory_total[0] / 1000000) + " GB");
+}
+if(network_exist){
+	draw_text(x,y + 160,"Network Send: " + string(network_send[0] / 1000000) + " mbps");
+	draw_text(x,y + 180,"Network Receive: " + string(network_receive[0] / 1000000) + " mbps");
 }

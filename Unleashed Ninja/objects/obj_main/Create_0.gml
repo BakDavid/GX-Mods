@@ -10,11 +10,8 @@ lw_subs_data  = 0;
 var _config_lw_subs = [
     "cpu",
     "gpu",
-    "battery",
     "ram",
-    "disk",
-    "network",
-    "audio",
+	"network",
     "desktop_mouse"
 ];
 
@@ -23,50 +20,24 @@ var _config_lw_subs = [
 cpu_exist = false;
 cpu_count = 0;
 cpu_name = []; // String
-cpu_logical_cores = []; // Int
-cpu_physical_cores = []; // Int
 cpu_usage = []; // Int (Percentage)
 cpu_curr_speed = []; // Int (MHz)
 cpu_max_speed = []; // Int (MHz)
-cpu_power = []; // Int (V)
 
 // GPU
 gpu_exist = false; 
 gpu_count = 0;
 gpu_name = []; // String
-gpu_usage = []; // Int (Percentage)
-gpu_clock_speed = []; // Int (MHz)
-gpu_fan_speed_pct = []; // Int (Percentage - Nvidia)
-gpu_fan_speed_rpm = []; // Int (RPM - AMD)
-gpu_power = []; // Int (Watt)
 gpu_temp = []; // Int (Celsius)
 gpu_memory_used = []; // Int (bytes)
-gpu_memory_available = []; // Int (bytes)
 gpu_memory_total = []; // Int (bytes)
-
-// Battery
-battery_exist = false;
-battery_count = 0;
-battery_name = []; // String
-battery_is_charging = []; // Bool
-battery_charge = []; // Int (Percentage)
-battery_time = []; // Int (Minutes)
 
 // RAM
 ram_exist = false;
 ram_count = 0;
 ram_name = []; // String
 ram_used = []; // Int (bytes)
-ram_available = []; // Int (bytes)
 ram_total = []; // Int (bytes)
-
-// Disk
-disk_exist = false;
-disk_count = 0;
-disk_name = []; // String
-disk_used = []; // Int (bytes)
-disk_available = []; // Int (bytes)
-disk_total = []; // Int (bytes)
 
 // Network
 network_exist = false;
@@ -74,11 +45,6 @@ network_count = 0;
 network_bandwidth = []; // Int (bps)
 network_send = []; // Int (bps)
 network_receive = []; // Int (bsp)
-
-// Audio
-audio_exist = false;
-audio_freq = 0; // Int
-audio_output = []; // Int
 
 // Add wallpaper user settings.
 var _config = [{
@@ -141,99 +107,218 @@ wallpaper_set_subscriptions(_config_lw_subs);
 
 
 function update_lw_subs(){
-	// Check if battery data exists
-	if (variable_instance_exists(lw_subs_data, "battery"))
-	{
-	 // Set variables from sub data safely
-	 battery_exist = true;
-	 battery_count = array_length(lw_subs_data.battery);
-
-	 // Loop for device count
-	 for (var _i = 0; _i < battery_count; _i++)
-	 {
-	  // Check for variable as might not always exist
-	  if (variable_instance_exists(lw_subs_data.battery[_i], "name"))
-	  {
-	   battery_name[_i] = lw_subs_data.battery[_i].name;
-	  }
-	  else
-	  {
-	   battery_name[_i] = ""; // Not available
-	  }
-	  // Check for variable as might not always exist
-	  if (variable_instance_exists(lw_subs_data.battery[_i], "is_charging"))
-	  {
-	   battery_is_charging[_i] = lw_subs_data.battery[_i].is_charging;
-	  }
-	  else
-	  {
-	   battery_is_charging[_i] = false; // Not available
-	  }
-	  // Check for variable as might not always exist 
-	  if (variable_instance_exists(lw_subs_data.battery[_i], "remaining_charge_pct"))
-	  {
-	   battery_charge[_i] = lw_subs_data.battery[_i].remaining_charge_pct;
-	  }
-	  else
-	  {
-	   battery_charge[_i] = -1; // Not available
-	  }
-	 }
-	}
-	else
-	{
-	 // Reset variables
-	 battery_exist = false;
-	 battery_count = 0;
-	}
-	
 	// Check if cpu data exists
 	if (variable_instance_exists(lw_subs_data, "cpu"))
 	{
-	 // Set variables from sub data safely
-	 cpu_exist = true;
-	 cpu_count = array_length(lw_subs_data.cpu);
-
-	 // Loop for device count
-	 for (var _i = 0; _i < cpu_count; _i++)
-	 {
-	  // Check for variable as might not always exist
-	  if (variable_instance_exists(lw_subs_data.cpu[_i], "name"))
-	  {
-	   cpu_name[_i] = lw_subs_data.cpu[_i].name;
-	  }
-	  else
-	  {
-	   cpu_name[_i] = ""; // Not available
-	  }
-	 }
-	}
-	else
-	{
-	 // Reset variables
-	 cpu_exist = false;
-	 cpu_count = 0;
-	}
-	
-	//audio check
-	if (variable_instance_exists(lw_subs_data, "audio"))
-	{
 		// Set variables from sub data safely
-		audio_exist = true;
-
-        if (array_length(lw_subs_data.audio) > 0)
-        {
-            audio_freq = lw_subs_data.audio[0].freq_resolution;
-            audio_output = lw_subs_data.audio[0].spectrum_amplitude;
-        }
-		else
-        {
-            audio_output = [];
-        }
+		cpu_exist = true;
+		cpu_count = array_length(lw_subs_data.cpu);
+		
+		// Loop for device count
+		for (var _i = 0; _i < cpu_count; _i++)
+		{
+			// Check for variable as might not always exist
+			if (variable_instance_exists(lw_subs_data.cpu[_i], "name"))
+			{
+				cpu_name[_i] = lw_subs_data.cpu[_i].name;
+			}
+			else
+			{
+				cpu_name[_i] = ""; // Not available
+			}
+			
+			// Check for variable as might not always exist
+			if (variable_instance_exists(lw_subs_data.cpu[_i], "usage_pct"))
+			{
+				cpu_usage[_i] = lw_subs_data.cpu[_i].usage_pct;
+			}
+			else
+			{
+				cpu_usage[_i] = -1; // Not available
+			}
+			
+			// Check for variable as might not always exist
+			if (variable_instance_exists(lw_subs_data.cpu[_i], "current_clock_speed_MHz"))
+			{
+				cpu_curr_speed[_i] = lw_subs_data.cpu[_i].current_clock_speed_MHz;
+			}
+			else
+			{
+				cpu_curr_speed[_i] = -1; // Not available
+			}
+			
+			// Check for variable as might not always exist
+			if (variable_instance_exists(lw_subs_data.cpu[_i], "max_clock_speed_MHz"))
+			{
+				cpu_max_speed[_i] = lw_subs_data.cpu[_i].max_clock_speed_MHz;
+			}
+			else
+			{
+				cpu_max_speed[_i] = -1; // Not available
+			}
+		}
 	}
 	else
 	{
 		// Reset variables
-		audio_exist = false;
+		cpu_exist = false;
+		cpu_count = 0;
+	}
+	
+	// Check if gpu data exists
+	if (variable_instance_exists(lw_subs_data, "gpu"))
+	{
+		// Set variables from sub data safely
+		gpu_exist = true;
+		gpu_count = array_length(lw_subs_data.gpu);
+		
+		// Loop for device count
+		for (var _i = 0; _i < gpu_count; _i++)
+		{
+			// Check for variable as might not always exist
+			if (variable_instance_exists(lw_subs_data.gpu[_i], "name"))
+			{
+				gpu_name[_i] = lw_subs_data.gpu[_i].name;
+			}
+			else
+			{
+				gpu_name[_i] = ""; // Not available
+			}
+			
+			// Check for variable as might not always exist
+			if (variable_instance_exists(lw_subs_data.gpu[_i], "temperature_C"))
+			{
+				gpu_temp[_i] = lw_subs_data.gpu[_i].temperature_C;
+			}
+			else
+			{
+				gpu_temp[_i] = -1; // Not available
+			}
+			
+			
+			// Check for variable as might not always exist
+			if (variable_instance_exists(lw_subs_data.gpu[_i], "memory_used_bytes"))
+			{
+				gpu_memory_used[_i] = lw_subs_data.gpu[_i].memory_used_bytes;
+			}
+			else
+			{
+				gpu_memory_used[_i] = -1; // Not available
+			}
+			
+			
+			// Check for variable as might not always exist
+			if (variable_instance_exists(lw_subs_data.gpu[_i], "memory_available_bytes"))
+			{
+				gpu_memory_available[_i] = lw_subs_data.gpu[_i].memory_available_bytes;
+			}
+			else
+			{
+				gpu_memory_available[_i] = -1; // Not available
+			}
+			
+			
+			// Check for variable as might not always exist
+			if (variable_instance_exists(lw_subs_data.gpu[_i], "memory_total_bytes"))
+			{
+				gpu_memory_total[_i] = lw_subs_data.gpu[_i].memory_total_bytes;
+			}
+			else
+			{
+				gpu_memory_total[_i] = -1; // Not available
+			}
+		}
+	}
+	else
+	{
+		// Reset variables
+		gpu_exist = false;
+		gpu_count = 0;
+	}
+	
+	// Check if ram data exists
+	if (variable_instance_exists(lw_subs_data, "ram"))
+	{
+		// Set variables from sub data safely
+		ram_exist = true;
+		ram_count = array_length(lw_subs_data.ram);
+		
+		// Loop for device count
+		for (var _i = 0; _i < ram_count; _i++)
+		{
+			// Check for variable as might not always exist
+			if (variable_instance_exists(lw_subs_data.ram[_i], "name"))
+			{
+				ram_name[_i] = lw_subs_data.ram[_i].name;
+			}
+			else
+			{
+				ram_name[_i] = ""; // Not available
+			}
+			
+			// Check for variable as might not always exist
+			if (variable_instance_exists(lw_subs_data.ram[_i], "used_bytes"))
+			{
+				ram_used[_i] = lw_subs_data.ram[_i].used_bytes;
+			}
+			else
+			{
+				ram_used[_i] = -1; // Not available
+			}
+			
+			// Check for variable as might not always exist
+			if (variable_instance_exists(lw_subs_data.ram[_i], "total_bytes"))
+			{
+				ram_total[_i] = lw_subs_data.ram[_i].total_bytes;
+			}
+			else
+			{
+				ram_total[_i] = -1; // Not available
+			}
+		}
+	}
+	else
+	{
+		// Reset variables
+		ram_exist = false;
+		ram_count = 0;
+	}
+	
+	// Check if network data exists
+	if (variable_instance_exists(lw_subs_data, "network"))
+	{
+		// Set variables from sub data safely
+		network_exist = true;
+		network_count = array_length(lw_subs_data.network);
+		
+		// Loop for device count
+		for (var _i = 0; _i < network_count; _i++)
+		{
+			// Check for variable as might not always exist
+			if (variable_instance_exists(lw_subs_data.network[_i], "send_bps"))
+			{
+				network_send[_i] = lw_subs_data.network[_i].send_bps;
+			}
+			else
+			{
+				network_send[_i] = -1; // Not available
+			}
+			
+			// Check for variable as might not always exist
+			if (variable_instance_exists(lw_subs_data.network[_i], "received_bps"))
+			{
+				network_receive[_i] = lw_subs_data.network[_i].received_bps;
+			}
+			else
+			{
+				network_receive[_i] = -1; // Not available
+			}
+		}
+	}
+	else
+	{
+		// Reset variables
+		network_exist = false;
+		network_count = 0;
 	}
 }
