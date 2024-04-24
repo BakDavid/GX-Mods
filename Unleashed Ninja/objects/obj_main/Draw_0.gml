@@ -1,3 +1,4 @@
+draw_set_font(fnt_main);
 if(cpu_exist){
 	draw_text(x,y,"CPU Name: " + cpu_name[0]);
 	draw_text(x,y + 20,"CPU Usage: " + string(cpu_usage[0]) + "%");
@@ -10,7 +11,7 @@ if(ram_exist){
 if(gpu_exist){
 	draw_text(x,y + 100,"GPU Name: " + gpu_name[0]);
 	draw_text(x,y + 120,"GPU Temperature: " + string(gpu_temp[0]) + " C");
-	draw_text(x,y + 140,"GPU Memory Usage: " + string(gpu_memory_used[0] / 1000000) + "/" + string(gpu_memory_total[0] / 1000000) + " GB");
+	draw_text(x,y + 140,"GPU Memory Usage: " + string(gpu_memory_used[0] / 1000000000) + "/" + string(gpu_memory_total[0] / 1000000000) + " GB");
 }
 if(network_exist){
 	draw_text(x,y + 160,"Network Send: " + string(network_send[0] / 1000000) + " mbps");
