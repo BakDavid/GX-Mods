@@ -21,13 +21,10 @@ cpu_exist = false;
 cpu_count = 0;
 cpu_name = []; // String
 cpu_usage = []; // Int (Percentage)
-cpu_curr_speed = []; // Int (MHz)
-cpu_max_speed = []; // Int (MHz)
 
 // GPU
 gpu_exist = false; 
 gpu_count = 0;
-gpu_name = []; // String
 gpu_temp = []; // Int (Celsius)
 gpu_memory_used = []; // Int (bytes)
 gpu_memory_total = []; // Int (bytes)
@@ -35,14 +32,12 @@ gpu_memory_total = []; // Int (bytes)
 // RAM
 ram_exist = false;
 ram_count = 0;
-ram_name = []; // String
 ram_used = []; // Int (bytes)
 ram_total = []; // Int (bytes)
 
 // Network
 network_exist = false;
 network_count = 0;
-network_bandwidth = []; // Int (bps)
 network_send = []; // Int (bps)
 network_receive = []; // Int (bsp)
 
@@ -136,26 +131,6 @@ function update_lw_subs(){
 			{
 				cpu_usage[_i] = -1; // Not available
 			}
-			
-			// Check for variable as might not always exist
-			if (variable_instance_exists(lw_subs_data.cpu[_i], "current_clock_speed_MHz"))
-			{
-				cpu_curr_speed[_i] = lw_subs_data.cpu[_i].current_clock_speed_MHz;
-			}
-			else
-			{
-				cpu_curr_speed[_i] = -1; // Not available
-			}
-			
-			// Check for variable as might not always exist
-			if (variable_instance_exists(lw_subs_data.cpu[_i], "max_clock_speed_MHz"))
-			{
-				cpu_max_speed[_i] = lw_subs_data.cpu[_i].max_clock_speed_MHz;
-			}
-			else
-			{
-				cpu_max_speed[_i] = -1; // Not available
-			}
 		}
 	}
 	else
@@ -176,16 +151,6 @@ function update_lw_subs(){
 		for (var _i = 0; _i < gpu_count; _i++)
 		{
 			// Check for variable as might not always exist
-			if (variable_instance_exists(lw_subs_data.gpu[_i], "name"))
-			{
-				gpu_name[_i] = lw_subs_data.gpu[_i].name;
-			}
-			else
-			{
-				gpu_name[_i] = ""; // Not available
-			}
-			
-			// Check for variable as might not always exist
 			if (variable_instance_exists(lw_subs_data.gpu[_i], "temperature_C"))
 			{
 				gpu_temp[_i] = lw_subs_data.gpu[_i].temperature_C;
@@ -205,18 +170,6 @@ function update_lw_subs(){
 			{
 				gpu_memory_used[_i] = -1; // Not available
 			}
-			
-			
-			// Check for variable as might not always exist
-			if (variable_instance_exists(lw_subs_data.gpu[_i], "memory_available_bytes"))
-			{
-				gpu_memory_available[_i] = lw_subs_data.gpu[_i].memory_available_bytes;
-			}
-			else
-			{
-				gpu_memory_available[_i] = -1; // Not available
-			}
-			
 			
 			// Check for variable as might not always exist
 			if (variable_instance_exists(lw_subs_data.gpu[_i], "memory_total_bytes"))
@@ -246,16 +199,6 @@ function update_lw_subs(){
 		// Loop for device count
 		for (var _i = 0; _i < ram_count; _i++)
 		{
-			// Check for variable as might not always exist
-			if (variable_instance_exists(lw_subs_data.ram[_i], "name"))
-			{
-				ram_name[_i] = lw_subs_data.ram[_i].name;
-			}
-			else
-			{
-				ram_name[_i] = ""; // Not available
-			}
-			
 			// Check for variable as might not always exist
 			if (variable_instance_exists(lw_subs_data.ram[_i], "used_bytes"))
 			{
